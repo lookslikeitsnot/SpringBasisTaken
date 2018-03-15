@@ -4,6 +4,9 @@ import java.util.List;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import be.vdab.services.PersoonService;
+import be.vdab.services.PersoonServiceImpl;
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -15,8 +18,9 @@ public class Main {
 		List<Persoon> personen = List.of(pers1, pers2, pers3, pers4);
 
 		try (ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("SpringXMLConfig.xml")) {
-			PersoonViewer persoonViewer = context.getBean(PersoonViewer.class);
-			persoonViewer.afbeelden(personen);
+//			PersoonViewer persoonViewer = context.getBean(PersoonViewer.class);
+//			persoonViewer.afbeelden(personen);
+			context.getBean(PersoonServiceImpl.class).findAll().stream().forEach(System.out::println);
 		}
 	}
 

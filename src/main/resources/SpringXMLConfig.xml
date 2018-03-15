@@ -12,4 +12,13 @@ http://www.springframework.org/schema/beans/spring-beans.xsd'>
 			</list>
 		</constructor-arg>
 	</bean>
+	<bean id='CSV' class='be.vdab.repositories.PersoonRepositoryCSV'>
+		<constructor-arg value='c:/TestFiles/personen.csv' />
+	</bean>
+	<bean id='meerdereRegels' class='be.vdab.repositories.PersoonRepositoryMeerdereRegels'>
+		<constructor-arg value='c:/TestFiles/personen.txt' />
+	</bean>
+	<bean id='persoonService' class='be.vdab.services.PersoonServiceImpl'>
+		<constructor-arg ref='meerdereRegels' />
+	</bean>
 </beans>

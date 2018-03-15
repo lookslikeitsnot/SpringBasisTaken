@@ -24,4 +24,9 @@ public class Persoon {
 	public int getAantalKinderen() {
 		return aantalKinderen;
 	}
+	
+	@Override
+	public String toString() {
+		return persoonNr + ". " + voornaam + " " + familienaam + " heeft " + aantalKinderen + " kinderen.";
+	}
 }
