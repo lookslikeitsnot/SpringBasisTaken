@@ -8,12 +8,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
 import be.vdab.Persoon;
 
+@Component
+@Qualifier("CSV")
 public class PersoonRepositoryCSV implements PersoonRepository {
 	private final Path path;
 
-	public PersoonRepositoryCSV(String path) {
+	public PersoonRepositoryCSV(@Value("${persoonCSV}") String path) {
 		this.path = Paths.get(path);
 	}
 

@@ -8,12 +8,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
 import be.vdab.Persoon;
 
+@Component
+@Qualifier("TXT")
 public class PersoonRepositoryMeerdereRegels implements PersoonRepository {
 	private final Path path;
 
-	public PersoonRepositoryMeerdereRegels(String path) {
+	public PersoonRepositoryMeerdereRegels(@Value("${persoonTXT}")  String path) {
 		this.path = Paths.get(path);
 	}
 

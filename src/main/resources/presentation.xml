@@ -11,6 +11,6 @@ http://www.springframework.org/schema/beans/spring-beans.xsd">
 				<value>AANTAL_KINDEREN</value>
 			</list>
 		</constructor-arg>
-		<constructor-arg ref="persoonService" />
+		<constructor-arg ref="persoonServiceImpl" />
 	</bean>
 </beans>

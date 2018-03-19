@@ -1,8 +1,11 @@
 package be.vdab;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import be.vdab.presentation.PersoonViewer;
+import be.vdab.presentation.PersoonViewerConfig;
+import be.vdab.repositories.PersoonRepositoryConfig;
+import be.vdab.services.ServicesConfig;
 
 public class Main {
 
@@ -19,8 +22,9 @@ public class Main {
 		// PersoonViewer persoonViewer = context.getBean(PersoonViewer.class);
 		// persoonViewer.afbeelden();
 		// }
-		try (ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("personen.xml",
-				"services.xml", "presentation.xml")) {
+		try (AnnotationConfigApplicationContext context =
+				new AnnotationConfigApplicationContext(
+				new Class[] {ServicesConfig.class, PersoonRepositoryConfig.class, PersoonViewerConfig.class})) {
 			context.getBean(PersoonViewer.class).afbeelden();
 		}
 	}
