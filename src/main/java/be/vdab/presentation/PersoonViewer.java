@@ -1,17 +1,22 @@
-package be.vdab;
+package be.vdab.presentation;
 
 import java.util.Arrays;
-import java.util.List;
+
+import be.vdab.Persoon;
+import be.vdab.PersoonEigenschap;
+import be.vdab.services.PersoonService;
 
 public class PersoonViewer {
-	PersoonEigenschap[] eigenschappen;
+	private PersoonEigenschap[] eigenschappen;
+	private final PersoonService persoonService;
 
-	public PersoonViewer(PersoonEigenschap[] eigenschappen) {
+	public PersoonViewer(PersoonEigenschap[] eigenschappen, PersoonService persoonService) {
 		this.eigenschappen = eigenschappen;
+		this.persoonService = persoonService;
 	}
 
-	public void afbeelden(List<Persoon> personen) {
-		for (Persoon persoon : personen) {
+	public void afbeelden() {
+		for (Persoon persoon : persoonService.findAll()) {
 			if (Arrays.asList(eigenschappen).contains(PersoonEigenschap.PERSOON_NR))
 				System.out.println(persoon.getPersoonNr());
 			if (Arrays.asList(eigenschappen).contains(PersoonEigenschap.VOORNAAM))
