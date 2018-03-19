@@ -24,7 +24,7 @@ public class Main {
 		// }
 		try (AnnotationConfigApplicationContext context =
 				new AnnotationConfigApplicationContext(
-				new Class[] {ServicesConfig.class, PersoonRepositoryConfig.class, PersoonViewerConfig.class})) {
+				new Class[] {PersoonRepositoryConfig.class, ServicesConfig.class, PersoonViewerConfig.class})) {
 			context.getBean(PersoonViewer.class).afbeelden();
 		}
 	}

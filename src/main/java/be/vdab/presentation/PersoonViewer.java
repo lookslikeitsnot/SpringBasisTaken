@@ -2,13 +2,11 @@ package be.vdab.presentation;
 
 import java.util.Arrays;
 
-import org.springframework.stereotype.Component;
-
 import be.vdab.Persoon;
 import be.vdab.PersoonEigenschap;
 import be.vdab.services.PersoonService;
 
-@Component
+//@Component
 public class PersoonViewer {
 	private PersoonEigenschap[] eigenschappen;
 	private final PersoonService persoonService;

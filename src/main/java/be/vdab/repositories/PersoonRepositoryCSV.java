@@ -8,18 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
-
 import be.vdab.Persoon;
 
-@Component
-@Qualifier("CSV")
-public class PersoonRepositoryCSV implements PersoonRepository {
+//@Component
+//@Qualifier("CSV")
+class PersoonRepositoryCSV implements PersoonRepository {
 	private final Path path;
 
-	public PersoonRepositoryCSV(@Value("${persoonCSV}") String path) {
+	PersoonRepositoryCSV(String path) {// @Value("${persoonCSV}")
 		this.path = Paths.get(path);
 	}
 
@@ -27,13 +23,9 @@ public class PersoonRepositoryCSV implements PersoonRepository {
 		List<Persoon> personen = new ArrayList<>();
 		if (path.toFile().exists()) {
 			try (Stream<String> stream = Files.lines(path)) {
-				stream.forEach(lijn -> personen.add(new Persoon(
-						Integer.parseInt(lijn.split(",")[0]), 
-						lijn.split(",")[1], 
-						lijn.split(",")[2], 
-						Integer.parseInt(lijn.split(",")[3]
-				))));
-				
+				stream.forEach(lijn -> personen.add(new Persoon(Integer.parseInt(lijn.split(",")[0]),
+						lijn.split(",")[1], lijn.split(",")[2], Integer.parseInt(lijn.split(",")[3]))));
+
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
